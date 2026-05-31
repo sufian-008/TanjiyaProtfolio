@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, ExternalLink, X, Award, ChevronLeft, ChevronRight, Eye } from 'lucide-react';
+import { Search, ExternalLink, X, Award, ChevronLeft, ChevronRight, Eye, FileText } from 'lucide-react';
 import api, { getImageUrl } from '../../services/api';
 import { CardSkeleton } from '../../components/Skeleton';
 
@@ -15,6 +15,12 @@ interface Certificate {
   credentialId: string;
   downloadUrl: string;
 }
+
+const isPdf = (url: string) => {
+  if (!url) return false;
+  const cleanUrl = url.split('?')[0].toLowerCase();
+  return cleanUrl.endsWith('.pdf');
+};
 
 export default function CertificatesPage() {
   const [certificates, setCertificates] = useState<Certificate[]>([]);
@@ -130,7 +136,7 @@ export default function CertificatesPage() {
                   onClick={() => setPreviewImage(getImageUrl(certificates[activeSlide]?.imageUrl))}
                   className="flex items-center gap-1 text-xs font-bold text-black dark:text-white hover:underline"
                 >
-                  <Eye className="h-4 w-4" /> Preview Image
+                  <Eye className="h-4 w-4" /> {isPdf(certificates[activeSlide]?.imageUrl) ? 'Preview PDF' : 'Preview Image'}
                 </button>
               )}
               {certificates[activeSlide]?.downloadUrl && (
@@ -147,13 +153,22 @@ export default function CertificatesPage() {
           </div>
 
           {/* Slide image frame */}
-          <div className="relative h-44 w-full md:w-80 rounded-lg overflow-hidden border border-border-light dark:border-border-dark bg-neutral-950 flex items-center justify-center">
+          <div className="relative h-44 w-full md:w-80 rounded-lg overflow-hidden border border-border-light dark:border-border-dark bg-neutral-950 flex items-center justify-center flex-shrink-0">
             {certificates[activeSlide]?.imageUrl ? (
-              <img
-                src={getImageUrl(certificates[activeSlide]?.imageUrl)}
-                alt={certificates[activeSlide]?.title}
-                className="w-full h-full object-cover"
-              />
+              isPdf(certificates[activeSlide]?.imageUrl) ? (
+                <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-red-950/20 to-neutral-900 border border-red-500/20 text-red-400 p-4 gap-2">
+                  <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-full">
+                    <FileText className="h-8 w-8 text-red-500" />
+                  </div>
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-red-400">PDF Certificate</span>
+                </div>
+              ) : (
+                <img
+                  src={getImageUrl(certificates[activeSlide]?.imageUrl)}
+                  alt={certificates[activeSlide]?.title}
+                  className="w-full h-full object-cover"
+                />
+              )
             ) : (
               <div className="w-full h-full flex flex-col items-center justify-center text-neutral-800 bg-gradient-to-br from-neutral-950 to-neutral-900">
                 <Award className="h-16 w-16 mb-2" />
@@ -219,11 +234,20 @@ export default function CertificatesPage() {
                 {/* Image Cover */}
                 <div className="relative h-40 w-full rounded-lg overflow-hidden border border-border-light dark:border-border-dark bg-neutral-950 flex items-center justify-center">
                   {cert.imageUrl ? (
-                    <img
-                      src={getImageUrl(cert.imageUrl)}
-                      alt={cert.title}
-                      className="w-full h-full object-cover"
-                    />
+                    isPdf(cert.imageUrl) ? (
+                      <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-red-950/20 to-neutral-900 border border-red-500/20 text-red-400 p-4 gap-2">
+                        <div className="p-2 bg-red-500/10 border border-red-500/20 rounded-full">
+                          <FileText className="h-6 w-6 text-red-500" />
+                        </div>
+                        <span className="text-[10px] uppercase font-bold tracking-widest text-red-400">PDF Certificate</span>
+                      </div>
+                    ) : (
+                      <img
+                        src={getImageUrl(cert.imageUrl)}
+                        alt={cert.title}
+                        className="w-full h-full object-cover"
+                      />
+                    )
                   ) : (
                     <div className="w-full h-full flex flex-col items-center justify-center text-neutral-800 bg-gradient-to-br from-neutral-950 to-neutral-900">
                       <Award className="h-10 w-10 text-neutral-800 mb-1" />
@@ -286,19 +310,45 @@ export default function CertificatesPage() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="relative max-w-3xl max-h-[80vh] rounded-xl overflow-hidden border border-neutral-800 bg-black z-10"
+              className="relative max-w-4xl w-full max-h-[85vh] rounded-xl overflow-hidden border border-neutral-800 bg-black z-10 flex flex-col"
             >
               <button
                 onClick={() => setPreviewImage(null)}
-                className="absolute top-3 right-3 p-1.5 bg-black/80 hover:bg-neutral-900 border border-neutral-800 rounded-full text-neutral-400 hover:text-white"
+                className="absolute top-3 right-3 p-1.5 bg-black/80 hover:bg-neutral-900 border border-neutral-800 rounded-full text-neutral-400 hover:text-white z-20"
               >
                 <X className="h-4 w-4" />
               </button>
-              <img
-                src={previewImage}
-                alt="Certificate Verification Preview"
-                className="w-full h-auto max-h-[75vh] object-contain"
-              />
+              
+              {isPdf(previewImage) ? (
+                <div className="w-full h-[75vh] flex flex-col">
+                  {/* Top Bar with download/open button */}
+                  <div className="flex justify-between items-center bg-neutral-900 px-4 py-3 border-b border-neutral-800">
+                    <span className="text-xs font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+                      <FileText className="h-4 w-4 text-red-500" /> Certificate PDF Preview
+                    </span>
+                    <a
+                      href={previewImage}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mr-10 text-[10px] sm:text-xs font-bold px-3 py-1.5 bg-white text-black hover:bg-neutral-200 rounded transition-colors"
+                    >
+                      Open in New Tab
+                    </a>
+                  </div>
+                  {/* PDF Viewer frame */}
+                  <iframe
+                    src={previewImage}
+                    className="w-full flex-1 border-0 bg-neutral-900"
+                    title="PDF Certificate"
+                  />
+                </div>
+              ) : (
+                <img
+                  src={previewImage}
+                  alt="Certificate Verification Preview"
+                  className="w-full h-auto max-h-[80vh] object-contain"
+                />
+              )}
             </motion.div>
           </div>
         )}

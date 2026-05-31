@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Award, Plus, Trash2, Edit3, Save, X, Upload } from 'lucide-react';
+import { Award, Plus, Trash2, Edit3, Save, X, Upload, FileText, ExternalLink } from 'lucide-react';
 import api from '../../../services/api';
 import { useToast } from '../../../context/ToastContext';
 import { Skeleton } from '../../../components/Skeleton';
@@ -90,9 +90,9 @@ export default function AdminCertificatesPage() {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       setImageUrl(res.data.url);
-      showToast('Certificate image uploaded successfully!', 'success');
+      showToast('Certificate file uploaded successfully!', 'success');
     } catch (err) {
-      showToast('Image upload failed', 'error');
+      showToast('File upload failed', 'error');
     } finally {
       setUploading(false);
     }
@@ -228,9 +228,9 @@ export default function AdminCertificatesPage() {
               />
             </div>
 
-            {/* Image upload */}
+            {/* Image/PDF upload */}
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-bold text-neutral-400 uppercase tracking-wider">Certificate Scan Image</label>
+              <label className="text-xs font-bold text-neutral-400 uppercase tracking-wider">Certificate Scan (Image / PDF)</label>
               <div className="flex gap-2">
                 <input
                   type="text"
@@ -243,13 +243,42 @@ export default function AdminCertificatesPage() {
                   <Upload className="h-4 w-4 text-neutral-500" />
                   <input
                     type="file"
-                    accept="image/*"
+                    accept="image/*,application/pdf"
                     onChange={handleImageUpload}
                     className="hidden"
                   />
                 </label>
               </div>
               {uploading && <span className="text-[10px] font-mono text-neutral-500 animate-pulse">Uploading asset...</span>}
+              
+              {imageUrl && (
+                <div className="mt-2 flex items-center gap-3 p-2 border border-border-light dark:border-border-dark rounded-lg bg-neutral-50 dark:bg-neutral-900/50">
+                  <div className="relative h-12 w-16 bg-neutral-950 rounded overflow-hidden flex items-center justify-center border border-border-light dark:border-border-dark flex-shrink-0">
+                    {imageUrl.toLowerCase().endsWith('.pdf') ? (
+                      <FileText className="h-6 w-6 text-red-500" />
+                    ) : (
+                      <img
+                        src={getImageUrl(imageUrl)}
+                        alt="Uploaded Certificate"
+                        className="w-full h-full object-cover"
+                      />
+                    )}
+                  </div>
+                  <div className="flex flex-col gap-0.5 overflow-hidden">
+                    <span className="text-[10px] font-bold text-black dark:text-white uppercase tracking-wider truncate">
+                      {imageUrl.toLowerCase().endsWith('.pdf') ? 'PDF Document Uploaded' : 'Scan Image Uploaded'}
+                    </span>
+                    <a
+                      href={getImageUrl(imageUrl)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[10px] text-neutral-500 dark:text-neutral-400 hover:text-black dark:hover:text-white flex items-center gap-0.5 transition-colors"
+                    >
+                      View uploaded file <ExternalLink className="h-3 w-3" />
+                    </a>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
