@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Github, ExternalLink, X, BookOpen, Layers } from 'lucide-react';
-import api, { API_URL } from '../../services/api';
+import api, { API_URL, getImageUrl } from '../../services/api';
 import { CardSkeleton } from '../../components/Skeleton';
 import ReactMarkdown from 'react-markdown';
 
@@ -116,14 +116,7 @@ We coordinated a community project providing prefabricated raised planting beds 
     setActiveImageIndex(0);
   };
 
-  // Helper to format image URLs
-  const getImageUrl = (url: string) => {
-    if (!url) return '';
-    if (url.startsWith('/uploads/')) {
-      return `http://localhost:5000${url}`;
-    }
-    return url;
-  };
+
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col gap-12">

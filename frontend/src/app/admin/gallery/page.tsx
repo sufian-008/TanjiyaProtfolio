@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Image as ImageIcon, Plus, Trash2, Save, X, Upload } from 'lucide-react';
-import api from '../../../services/api';
+import api, { getImageUrl } from '../../../services/api';
 import { useToast } from '../../../context/ToastContext';
 import { Skeleton } from '../../../components/Skeleton';
 
@@ -94,13 +94,7 @@ export default function AdminGalleryPage() {
     }
   };
 
-  const getImageUrl = (imagePath: string) => {
-    if (!imagePath) return '';
-    if (imagePath.startsWith('/uploads/')) {
-      return `http://localhost:5000${imagePath}`;
-    }
-    return imagePath;
-  };
+
 
   return (
     <div className="flex flex-col gap-8">

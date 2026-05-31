@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Search, Calendar, Eye, Clock, ArrowRight } from 'lucide-react';
-import api from '../../services/api';
+import api, { getImageUrl } from '../../services/api';
 import { CardSkeleton } from '../../components/Skeleton';
 
 interface Blog {
@@ -90,13 +90,7 @@ export default function BlogListingPage() {
     if (page < totalPages) setPage(page + 1);
   };
 
-  const getImageUrl = (url: string) => {
-    if (!url) return '';
-    if (url.startsWith('/uploads/')) {
-      return `http://localhost:5000${url}`;
-    }
-    return url;
-  };
+
 
   // Find a featured post for the banner
   const featuredBlog = blogs[0];

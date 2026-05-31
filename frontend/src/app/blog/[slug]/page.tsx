@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Calendar, Eye, Clock, ArrowLeft, Heart, AlertTriangle, Reply, Send, Share2, CornerDownRight } from 'lucide-react';
-import api from '../../../services/api';
+import api, { getImageUrl } from '../../../services/api';
 import { useToast } from '../../../context/ToastContext';
 import { Skeleton } from '../../../components/Skeleton';
 import ReactMarkdown from 'react-markdown';
@@ -208,13 +208,7 @@ Look for:
     }
   };
 
-  const getImageUrl = (url: string) => {
-    if (!url) return '';
-    if (url.startsWith('/uploads/')) {
-      return `http://localhost:5000${url}`;
-    }
-    return url;
-  };
+
 
   // Recursive Comment Tree Node component
   const CommentNode = ({ comment, isReply = false }: { comment: Comment; isReply?: boolean }) => {

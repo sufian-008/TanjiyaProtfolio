@@ -41,3 +41,13 @@ api.interceptors.response.use(
 
 export default api;
 export { API_URL };
+
+export const getImageUrl = (url: string) => {
+  if (!url) return '';
+  if (url.startsWith('/uploads/')) {
+    const baseUrl = API_URL.replace(/\/api$/, '');
+    return `${baseUrl}${url}`;
+  }
+  return url;
+};
+

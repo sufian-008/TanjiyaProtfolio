@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Image as ImageIcon, X, Maximize2, Compass } from 'lucide-react';
-import api from '../../services/api';
+import api, { getImageUrl } from '../../services/api';
 import { Skeleton } from '../../components/Skeleton';
 
 interface GalleryItem {
@@ -48,13 +48,7 @@ export default function GalleryPage() {
     fetchGallery();
   }, []);
 
-  const getImageUrl = (url: string) => {
-    if (!url) return '';
-    if (url.startsWith('/uploads/')) {
-      return `http://localhost:5000${url}`;
-    }
-    return url;
-  };
+
 
   return (
     <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col gap-12 min-h-[80vh]">

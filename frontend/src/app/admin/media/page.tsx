@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { Upload, Copy, Trash2, Image as ImageIcon, Link as LinkIcon, FileText } from 'lucide-react';
-import api from '../../../services/api';
+import api, { getImageUrl } from '../../../services/api';
 import { useToast } from '../../../context/ToastContext';
 import { Skeleton } from '../../../components/Skeleton';
 
@@ -88,7 +88,7 @@ export default function AdminMediaLibrary() {
   };
 
   const handleCopyLink = (url: string) => {
-    const formattedUrl = url.startsWith('/uploads/') ? `http://localhost:5000${url}` : url;
+    const formattedUrl = getImageUrl(url);
     navigator.clipboard.writeText(formattedUrl);
     showToast('Direct asset link copied to clipboard!', 'success');
   };
@@ -104,12 +104,7 @@ export default function AdminMediaLibrary() {
     }
   };
 
-  const getImageUrl = (url: string) => {
-    if (url.startsWith('/uploads/')) {
-      return `http://localhost:5000${url}`;
-    }
-    return url;
-  };
+
 
   return (
     <div className="flex flex-col gap-8">
