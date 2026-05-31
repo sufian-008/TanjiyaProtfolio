@@ -4,7 +4,6 @@ const nextConfig = {
   images: {
     domains: ['localhost', 'res.cloudinary.com', 'images.unsplash.com'],
   },
-  // Ensure redirects or environment variables if needed
 }
 
 module.exports = nextConfig

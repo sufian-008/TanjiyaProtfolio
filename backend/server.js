@@ -12,8 +12,20 @@ const errorHandler = require('./middleware/errorHandler');
 const app = express();
 
 // Middlewares
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://tanjiyaprotfolio-2.onrender.com'
+];
+
 app.use(cors({
-  origin: '*', // For local dev flexibility, update in production if needed
+  origin: (origin, callback) => {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) !== -1 || origin.endsWith('.onrender.com')) {
+      return callback(null, true);
+    }
+    return callback(new Error('Not allowed by CORS'));
+  },
   credentials: true
 }));
 app.use(express.json());
