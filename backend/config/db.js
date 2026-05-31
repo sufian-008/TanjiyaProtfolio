@@ -266,7 +266,7 @@ const connectDB = async () => {
       dbConnection.isConnected = true;
       dbConnection.type = 'MongoDB Atlas';
       console.log('Database connected successfully: MongoDB Atlas');
-      await seedMongoDb();
+      // await seedMongoDb(); // Disabled to prevent clearing/erasing user database on server restarts
     } catch (err) {
       console.error('MongoDB connection failed. Falling back to local JSON database.', err.message);
       initLocalDb();
