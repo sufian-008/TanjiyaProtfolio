@@ -1,0 +1,199 @@
+{
+  "users": [],
+  "projects": [],
+  "blogs": [],
+  "comments": [],
+  "certificates": [],
+  "experiences": [
+    {
+      "company": "Charfashion Residential Model School & College",
+      "role": "Grade 7 Student",
+      "duration": "2026 – Present",
+      "responsibilities": [
+        "Active participant in science and innovation programs",
+        "Engaged in leadership and extracurricular activities",
+        "Interested in STEM education and research"
+      ],
+      "achievements": [],
+      "technologies": [
+        "STEM",
+        "Science Research"
+      ],
+      "type": "Education"
+    },
+    {
+      "company": "Zero Olympiad",
+      "role": "Ambassador",
+      "duration": "2026 – Present",
+      "responsibilities": [
+        "Promote Olympiad and educational activities",
+        "Encourage student participation in academic competitions",
+        "Represent the organization in outreach programs"
+      ],
+      "achievements": [
+        "Promoted academic excellence"
+      ],
+      "technologies": [
+        "Leadership",
+        "Public Speaking"
+      ],
+      "type": "Organization"
+    },
+    {
+      "company": "Bangla Innovator Team",
+      "role": "Co-Leader",
+      "duration": "2026 – Present",
+      "responsibilities": [
+        "Lead innovation-focused projects and initiatives",
+        "Coordinate team activities and events",
+        "Support young innovators in developing creative solutions"
+      ],
+      "achievements": [
+        "Co-led youth innovation projects"
+      ],
+      "technologies": [
+        "Project Management",
+        "Teamwork"
+      ],
+      "type": "Organization"
+    },
+    {
+      "company": "Independent & School-Based Projects",
+      "role": "Science Project Leader",
+      "duration": "2026 – Present",
+      "responsibilities": [
+        "Lead and manage science-related projects",
+        "Research and develop solutions to real-world challenges",
+        "Participate in science fairs and innovation competitions"
+      ],
+      "achievements": [
+        "Created STEM projects"
+      ],
+      "technologies": [
+        "Robotics",
+        "Innovation & Creativity"
+      ],
+      "type": "Organization"
+    },
+    {
+      "company": "Community & Social Activities",
+      "role": "Social Volunteer",
+      "duration": "2026 – Present",
+      "responsibilities": [
+        "Participate in community service activities",
+        "Support educational and awareness campaigns",
+        "Contribute to youth development and social impact programs"
+      ],
+      "achievements": [
+        "Contributed to community welfare"
+      ],
+      "technologies": [
+        "Community Engagement",
+        "Social Work"
+      ],
+      "type": "Volunteering"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Leadership",
+      "category": "Core Skills",
+      "percentage": 95,
+      "icon": "Award"
+    },
+    {
+      "name": "Problem Solving",
+      "category": "Core Skills",
+      "percentage": 90,
+      "icon": "Brain"
+    },
+    {
+      "name": "Critical Thinking",
+      "category": "Core Skills",
+      "percentage": 90,
+      "icon": "Target"
+    },
+    {
+      "name": "Science Research",
+      "category": "Science & Tech",
+      "percentage": 85,
+      "icon": "Flame"
+    },
+    {
+      "name": "Project Management",
+      "category": "Leadership",
+      "percentage": 85,
+      "icon": "Briefcase"
+    },
+    {
+      "name": "Teamwork",
+      "category": "Soft Skills",
+      "percentage": 95,
+      "icon": "Users"
+    },
+    {
+      "name": "Public Speaking",
+      "category": "Soft Skills",
+      "percentage": 80,
+      "icon": "MessageSquare"
+    },
+    {
+      "name": "Innovation & Creativity",
+      "category": "Science & Tech",
+      "percentage": 92,
+      "icon": "Lightbulb"
+    },
+    {
+      "name": "Community Engagement",
+      "category": "Soft Skills",
+      "percentage": 88,
+      "icon": "Heart"
+    }
+  ],
+  "olympiads": [],
+  "gallerys": [],
+  "researchs": [],
+  "settings": {
+    "name": "Tanjiya Nowrin",
+    "title": "Grade 7 Student | Zero Olympiad Ambassador | Bangla Innovator Team Co-Leader",
+    "bio": "I am a Grade 7 student at Charfashion Residential Model School & College with a strong passion for science, innovation, leadership, and social impact. I actively participate in educational, scientific, and community development activities. As a Zero Olympiad Ambassador, Bangla Innovator Team Co-Leader, and Science Project Leader, I enjoy leading projects, solving real-world problems, and contributing to positive change through creativity and teamwork.",
+    "resumeUrl": "",
+    "avatarUrl": "",
+    "views": 0,
+    "socials": {
+      "github": "https://github.com/tanjiya",
+      "linkedin": "https://linkedin.com/in/tanjiya",
+      "email": "tanjiya.nowrin@example.com",
+      "facebook": "",
+      "twitter": ""
+    },
+    "achievements": [
+      {
+        "title": "Zero Olympiad Ambassador",
+        "description": "Appointed as an ambassador to promote academic excellence, Olympiad engagement, and STEM fields among young students."
+      },
+      {
+        "title": "Co-Leader, Bangla Innovator Team",
+        "description": "Successfully led coordination, projects, and design solutions supporting budding inventors and creators."
+      },
+      {
+        "title": "Science Project Leader",
+        "description": "Spearheaded research, robotics, and innovation models for school-based and independent science competitions."
+      },
+      {
+        "title": "Active Community Volunteer",
+        "description": "Contributed to local educational campaigns, youth development drives, and environmental awareness actions."
+      }
+    ],
+    "interests": [
+      "Science",
+      "Technology",
+      "Innovation",
+      "Robotics",
+      "Olympiads",
+      "Leadership",
+      "Social Work",
+      "Community Development"
+    ]
+  }
+}
