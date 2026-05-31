@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Award, Plus, Trash2, Edit3, Save, X, Upload, FileText, ExternalLink } from 'lucide-react';
-import api from '../../../services/api';
+import api, { getImageUrl } from '../../../services/api';
 import { useToast } from '../../../context/ToastContext';
 import { Skeleton } from '../../../components/Skeleton';
 
