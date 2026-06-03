@@ -20,7 +20,7 @@ export default function HomePage() {
   const [titleIndex, setTitleIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-  const [bioText, setBioText] = useState("I am a Grade 7 student at Charfashion Residential Model School & College, serving as a Zero Olympiad Ambassador and Co-Leader of the Bangla Innovator Team. I am passionate about science, innovation, problem-solving, and social service. As a Science Project Leader, I enjoy leading projects and working on creative solutions to real-world challenges. My goal is to make a positive impact through leadership, learning, and community engagement.");
+  const [bioText, setBioText] = useState("I am a Grade 7 student at Charfashion Residential Model School & College, serving as a Zero Olympiad Ambassador and Co-Leader of the Bangla Innovator Team. I am passionate about science, innovation, problem-solving, and social service.");
   const [stats, setStats] = useState({
     projects: 0,
     certificates: 0,
